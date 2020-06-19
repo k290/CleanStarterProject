@@ -1,0 +1,26 @@
+
+#content-container {
+    padding: 1rem;
+}
+
+h1 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.grid-bottom-buttons {
+    margin-top: 1rem;
+}
+
+.grid-delete-icon{
+    color: darkred;
+    margin-left: 4px;
+    cursor: pointer;
+}
+
+/*todo should use scss instead of overriding*/
+.k-menu:not(.k-context-menu) {
+    background-color: #30547b;
+    color: white;
+    font-size: 1rem;
+}
