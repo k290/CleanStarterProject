@@ -58,8 +58,6 @@ namespace MyMovieLibrary
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
-            app.UseOpenApi();
-            app.UseSwaggerUi3();
 
             app.UseRouting();
 
