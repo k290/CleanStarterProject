@@ -20,12 +20,16 @@ namespace MyMovieLibrary.Application.Common.Mappings
                     i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IMapFrom<>)))
                 .ToList();
 
+            var iMapFromName = typeof(IMapFrom<>).Name;
+            var mappingName = nameof(IMapFrom<object>.Mapping);
+
             foreach (var type in types)
             {
                 var instance = Activator.CreateInstance(type);
 
-                var methodInfo = type.GetMethod("Mapping") 
-                    ?? type.GetInterface("IMapFrom`1").GetMethod("Mapping");
+
+                var methodInfo = type.GetMethod(mappingName) 
+                    ?? type.GetInterface(iMapFromName).GetMethod(mappingName);
                 
                 methodInfo?.Invoke(instance, new object[] { this });
 
