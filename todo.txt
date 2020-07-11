@@ -1,0 +1,2 @@
+1. Implement a presenter, check with enums https://medium.com/@stephanhoekstra/clean-architecture-in-net-8eed6c224c50
+2. Autogen swagger from other project
