@@ -37,22 +37,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\src\App.tsx" />
-    <None Remove="ClientApp\src\components\ActorsList.tsx" />
-    <None Remove="ClientApp\src\components\AreYouSureDialog.tsx" />
-    <None Remove="ClientApp\src\components\DropDownFilterCell.tsx" />
-    <None Remove="ClientApp\src\components\enumhelpers.ts" />
-    <None Remove="ClientApp\src\components\Layout.tsx" />
-    <None Remove="ClientApp\src\components\Loading.tsx" />
-    <None Remove="ClientApp\src\components\MovieCreate.tsx" />
-    <None Remove="ClientApp\src\components\MovieEdit.tsx" />
-    <None Remove="ClientApp\src\components\MovieForm.tsx" />
-    <None Remove="ClientApp\src\components\MovieList.tsx" />
-    <None Remove="ClientApp\src\components\NavMenu.tsx" />
-    <None Remove="ClientApp\src\index.tsx" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj" />
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
