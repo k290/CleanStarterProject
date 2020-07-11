@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
@@ -44,8 +45,11 @@ namespace MyMovieLibrary
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IMapper mapper)
         {
+#if DEBUG
+            mapper.ConfigurationProvider.AssertConfigurationIsValid(); //ideally should be in a unit test
+#endif
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
