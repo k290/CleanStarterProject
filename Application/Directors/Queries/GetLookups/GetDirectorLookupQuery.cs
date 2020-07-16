@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace MyMovieLibrary.Application.Directors.Queries.GetLookups
 {
-    public class GetDirectorLookupQuery : IRequest<DirectorLookupVm>
+    public class GetDirectorLookupQuery : IRequest<DirectorLookupModel>
     {
 
     }
 
-    public class GetDirectorLookupQueryHandler : IRequestHandler<GetDirectorLookupQuery, DirectorLookupVm>
+    public class GetDirectorLookupQueryHandler : IRequestHandler<GetDirectorLookupQuery, DirectorLookupModel>
     {
         private readonly IApplicationDbContext _context;
         private readonly IMapper _mapper;
@@ -25,7 +25,7 @@ namespace MyMovieLibrary.Application.Directors.Queries.GetLookups
             _mapper = mapper;
         }
 
-        public async Task<DirectorLookupVm> Handle(GetDirectorLookupQuery request, CancellationToken cancellationToken)
+        public async Task<DirectorLookupModel> Handle(GetDirectorLookupQuery request, CancellationToken cancellationToken)
         {
             var lookups = await _context.Directors
                 .OrderBy(a => a.Name).ThenBy(a => a.Surname)
@@ -33,7 +33,7 @@ namespace MyMovieLibrary.Application.Directors.Queries.GetLookups
                 .ToListAsync(cancellationToken);
 
 
-            return new DirectorLookupVm
+            return new DirectorLookupModel
             {
                 DirectorLookups = lookups
             };

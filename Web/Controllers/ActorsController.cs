@@ -8,7 +8,7 @@ namespace Web.Controllers
     public class ActorsController : ApiController
     {
         [HttpGet]
-        public async Task<ActionResult<ActorsVm>> Get([FromQuery]GetActorsQuery query)
+        public async Task<ActionResult<ActorsModel>> Get([FromQuery]GetActorsQuery query)
         {
             return await Mediator.Send(query);
         }

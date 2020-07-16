@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace MyMovieLibrary.Application.Actors.Queries.GetActors
 {
-    public class GetActorsQuery : IRequest<ActorsVm>
+    public class GetActorsQuery : IRequest<ActorsModel>
     {
         public int Skip { get; set; }
         public int Take { get; set; }
@@ -21,7 +21,7 @@ namespace MyMovieLibrary.Application.Actors.Queries.GetActors
         public string Surname { get; set; }
     }
 
-    public class GetActorsQueryHandler : IRequestHandler<GetActorsQuery, ActorsVm>
+    public class GetActorsQueryHandler : IRequestHandler<GetActorsQuery, ActorsModel>
     {
         private readonly IApplicationDbContext _context;
         private readonly IMapper _mapper;
@@ -32,7 +32,7 @@ namespace MyMovieLibrary.Application.Actors.Queries.GetActors
             _mapper = mapper;
         }
 
-        public async Task<ActorsVm> Handle(GetActorsQuery request, CancellationToken cancellationToken)
+        public async Task<ActorsModel> Handle(GetActorsQuery request, CancellationToken cancellationToken)
         {
             var actors = await _context.Actors
                 .OrderBy(a => a.Name).ThenBy(a => a.Surname)
@@ -44,7 +44,7 @@ namespace MyMovieLibrary.Application.Actors.Queries.GetActors
 
             var count = await _context.Actors.CountAsync(cancellationToken);
 
-            return new ActorsVm
+            return new ActorsModel
             {
                 Actors = actors,
                 Total = count

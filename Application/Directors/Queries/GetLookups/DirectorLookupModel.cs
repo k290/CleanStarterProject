@@ -2,7 +2,7 @@
 
 namespace MyMovieLibrary.Application.Directors.Queries.GetLookups
 {
-    public class DirectorLookupVm
+    public class DirectorLookupModel
     {
         public IList<DirectorLookupDto> DirectorLookups { get; set; }
     }

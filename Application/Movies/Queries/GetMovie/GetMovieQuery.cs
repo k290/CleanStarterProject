@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace MyMovieLibrary.Application.Movies.Queries.GetMovie
 {
-    public class GetMovieQuery : IRequest<MovieVm>
+    public class GetMovieQuery : IRequest<MovieModel>
     {
         public Guid Id { get; set; }
 
     }
 
-    public class GetMovieQueryHandler : IRequestHandler<GetMovieQuery, MovieVm>
+    public class GetMovieQueryHandler : IRequestHandler<GetMovieQuery, MovieModel>
     {
         private readonly IApplicationDbContext _context;
         private readonly IMapper _mapper;
@@ -29,7 +29,7 @@ namespace MyMovieLibrary.Application.Movies.Queries.GetMovie
             _mediator = Mediator;
         }
 
-        public async Task<MovieVm> Handle(GetMovieQuery request, CancellationToken cancellationToken)
+        public async Task<MovieModel> Handle(GetMovieQuery request, CancellationToken cancellationToken)
         {
             var entity = await _context.Movies
                 .Include(x => x.Director)
@@ -42,7 +42,7 @@ namespace MyMovieLibrary.Application.Movies.Queries.GetMovie
             var directorLookupVm = await _mediator.Send(new GetDirectorLookupQuery());
 
 
-            return new MovieVm
+            return new MovieModel
             {
                 Movie = movie,
                 ActorLookups = actorLookupVm.ActorLookups,

@@ -13,13 +13,13 @@ namespace Web.Controllers
     {
 
         [HttpGet]
-        public async Task<ActionResult<MovieVm>> Get(Guid id)
+        public async Task<ActionResult<MovieModel>> Get(Guid id)
         {
             return await Mediator.Send(new GetMovieQuery { Id = id });
         }
 
         [HttpGet("[action]")]
-        public async Task<ActionResult<MoviesVm>> GetAll([FromQuery] GetMoviesQuery query)
+        public async Task<ActionResult<MoviesModel>> GetAll([FromQuery] GetMoviesQuery query)
         {
             return await Mediator.Send(query);
         }

@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace MyMovieLibrary.Application.Movies.Queries.GetMovies
 {
-    public class GetMoviesQuery : IRequest<MoviesVm>
+    public class GetMoviesQuery : IRequest<MoviesModel>
     {
         public int Skip { get; set; }
         public int Take { get; set; }
@@ -28,7 +28,7 @@ namespace MyMovieLibrary.Application.Movies.Queries.GetMovies
         public IList<Guid> ActorIds { get; set; } = new List<Guid>();
     }
 
-    public class GetMoviesQueryHandler : IRequestHandler<GetMoviesQuery, MoviesVm>
+    public class GetMoviesQueryHandler : IRequestHandler<GetMoviesQuery, MoviesModel>
     {
         private readonly IApplicationDbContext _context;
         private readonly IMapper _mapper;
@@ -41,7 +41,7 @@ namespace MyMovieLibrary.Application.Movies.Queries.GetMovies
             _mediator = Mediator;
         }
 
-        public async Task<MoviesVm> Handle(GetMoviesQuery request, CancellationToken cancellationToken)
+        public async Task<MoviesModel> Handle(GetMoviesQuery request, CancellationToken cancellationToken)
         {
             var movies = await _context.Movies
                 .Include(x => x.Director)
@@ -58,7 +58,7 @@ namespace MyMovieLibrary.Application.Movies.Queries.GetMovies
             var actorLookupVm = await _mediator.Send(new GetActorLookupQuery());
             var directorLookupVm = await _mediator.Send(new GetDirectorLookupQuery());
 
-            return new MoviesVm
+            return new MoviesModel
             {
                 Movies = movies,
                 ActorLookups = actorLookupVm.ActorLookups,
