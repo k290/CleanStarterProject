@@ -113,7 +113,7 @@
       "enumNameGeneratorType": null,
       "serviceHost": null,
       "serviceSchemes": null,
-      "output": "../../MyMovieLibrary/Web/ClientApp/src/client.ts",
+      "output": "ClientApp/src/client.ts",
       "newLineBehavior": "Auto"
     }
   }

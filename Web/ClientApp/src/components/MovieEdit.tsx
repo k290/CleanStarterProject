@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { MoviesClient, UpdateMovieCommand, MovieVm } from '../client';
+import { MoviesClient, UpdateMovieCommand, MovieModel } from '../client';
 import { useParams } from 'react-router';
 import { toast } from 'react-toastify'
 import { MovieForm } from './MovieForm';
@@ -9,7 +9,7 @@ import { Loading } from './Loading';
 export const MovieEdit = () => {
     const { id } = useParams();
     const client = new MoviesClient();
-    const [vm, setVm] = useState<MovieVm>();
+    const [vm, setVm] = useState<MovieModel>();
     const [loading, setLoading] = useState<boolean>(true);
 
     const fetch = async () => {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Location, ActorLookupDto, DirectorLookupDto, MovieDisplayActorDto, MovieDisplayDirectorDto, UpdateMovieCommand, MovieVm } from '../client';
+import { Location, ActorLookupDto, DirectorLookupDto, MovieDisplayActorDto, MovieDisplayDirectorDto, UpdateMovieCommand, MovieModel } from '../client';
 import { EnumHelpers, EnumNameAndValue } from './enumhelpers';
 import { Input, NumericTextBox, NumericTextBoxChangeEvent } from '@progress/kendo-react-inputs';
 import { DropDownList, DropDownListChangeEvent, MultiSelect, MultiSelectChangeEvent } from '@progress/kendo-react-dropdowns';
@@ -7,7 +7,7 @@ import { Button } from '@progress/kendo-react-buttons';
 
 
 export type MovieFormProps = {
-    vm: MovieVm;
+    vm: MovieModel;
     handleSubmit: (e: React.FormEvent, js: unknown) => {};
 }
 export const MovieForm = (props: MovieFormProps) => {

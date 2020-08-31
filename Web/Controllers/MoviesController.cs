@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyMovieLibrary.Application.Actors.Queries.GetLookups;
+using MyMovieLibrary.Application.Directors.Queries.GetLookups;
 using MyMovieLibrary.Application.Movies.Commands.CreateMovie;
 using MyMovieLibrary.Application.Movies.Commands.DeleteMovie;
 using MyMovieLibrary.Application.Movies.Commands.UpdateMovie;
@@ -6,11 +8,19 @@ using MyMovieLibrary.Application.Movies.Queries.GetMovie;
 using MyMovieLibrary.Application.Movies.Queries.GetMovies;
 using System;
 using System.Threading.Tasks;
+using Web.Providers;
 
 namespace Web.Controllers
 {
     public class MoviesController : ApiController
     {
+        private readonly IGetAllMoviesPresenter getAllMoviesPresenter;
+
+        public MoviesController(IGetAllMoviesPresenter getAllMoviesPresenter)
+        {
+            this.getAllMoviesPresenter = getAllMoviesPresenter;
+        }
+
 
         [HttpGet]
         public async Task<ActionResult<MovieModel>> Get(Guid id)
@@ -19,9 +29,12 @@ namespace Web.Controllers
         }
 
         [HttpGet("[action]")]
-        public async Task<ActionResult<MoviesModel>> GetAll([FromQuery] GetMoviesQuery query)
+        public async Task<ActionResult<AllMoviesViewModel>> GetAll([FromQuery] GetMoviesQuery query)
         {
-            return await Mediator.Send(query);
+            var moviesModel = await Mediator.Send(query);
+            var actorLookupModel = await Mediator.Send(new GetActorLookupQuery());
+            var directorLookupModel = await Mediator.Send(new GetDirectorLookupQuery());
+            return getAllMoviesPresenter.GetViewModel(moviesModel, actorLookupModel, directorLookupModel);
         }
 
         [HttpPut("{id}")] //todo think about why its better to also specify the id as part of the URL :? RESTful?

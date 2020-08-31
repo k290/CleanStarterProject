@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace MyMovieLibrary.Application.Actors.Queries.GetLookups
 {
-    public class GetActorLookupQuery : IRequest<ActorLookupVm>
+    public class GetActorLookupQuery : IRequest<ActorLookupModel>
     {
 
     }
 
-    public class GetActorLookupQueryHandler : IRequestHandler<GetActorLookupQuery, ActorLookupVm>
+    public class GetActorLookupQueryHandler : IRequestHandler<GetActorLookupQuery, ActorLookupModel>
     {
         private readonly IApplicationDbContext _context;
         private readonly IMapper _mapper;
@@ -26,7 +26,7 @@ namespace MyMovieLibrary.Application.Actors.Queries.GetLookups
             _mapper = mapper;
         }
 
-        public async Task<ActorLookupVm> Handle(GetActorLookupQuery request, CancellationToken cancellationToken)
+        public async Task<ActorLookupModel> Handle(GetActorLookupQuery request, CancellationToken cancellationToken)
         {
             var lookups = await _context.Actors
                 .OrderBy(a => a.Name).ThenBy(a => a.Surname)
@@ -34,7 +34,7 @@ namespace MyMovieLibrary.Application.Actors.Queries.GetLookups
                 .ToListAsync(cancellationToken);
 
 
-            return new ActorLookupVm
+            return new ActorLookupModel
             {
                 ActorLookups = lookups
             };

@@ -61,9 +61,6 @@ namespace MyMovieLibrary.Application.Movies.Queries.GetMovies
             return new MoviesModel
             {
                 Movies = movies,
-                ActorLookups = actorLookupVm.ActorLookups,
-                DirectorLookups = directorLookupVm.DirectorLookups,
-                Total = count,
             };
         }
 

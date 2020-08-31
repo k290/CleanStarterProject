@@ -14,7 +14,7 @@ namespace Web.Controllers
         }
 
         [HttpGet("[action]")]
-        public async Task<ActionResult<ActorLookupVm>> GetLookups()
+        public async Task<ActionResult<ActorLookupModel>> GetLookups()
         {
             return await Mediator.Send(new GetActorLookupQuery());
         }
