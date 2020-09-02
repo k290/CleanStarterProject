@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Web.Providers
+namespace Web.Presenters
 {
     public class GetAllMoviesPresenter : IGetAllMoviesPresenter
     {

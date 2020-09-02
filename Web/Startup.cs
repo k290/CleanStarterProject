@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyMovieLibrary.Application;
 using MyMovieLibrary.Infrastructure;
+using MyMovieLibrary.Web;
 using System.Reflection;
 
 namespace MyMovieLibrary
@@ -25,6 +26,7 @@ namespace MyMovieLibrary
         {
             services.AddApplication();
             services.AddInfrastructure(Configuration);
+            services.AddWeb();
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.AddControllersWithViews();

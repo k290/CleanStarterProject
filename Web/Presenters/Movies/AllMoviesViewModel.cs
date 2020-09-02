@@ -3,7 +3,7 @@ using MyMovieLibrary.Application.Directors.Queries.GetLookups;
 using MyMovieLibrary.Application.Movies.Queries.GetMovies;
 using System.Collections.Generic;
 
-namespace Web.Providers
+namespace Web.Presenters
 {
     public class AllMoviesViewModel
     {
