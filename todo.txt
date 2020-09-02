@@ -1,3 +1,7 @@
 1. Implement a presenter, check with enums https://medium.com/@stephanhoekstra/clean-architecture-in-net-8eed6c224c50
+Get rid of application level Dtos. Taylor sends these to the view but we are going to let the presenter handle creating the models
+Or maybe look at: https://paulovich.net/clean-architecture-for-net-applications/
+
+Better, you pass the presenter into the usecase: https://fullstackmark.com/post/18/building-aspnet-core-web-apis-with-clean-architecture
 2. Autogen swagger from other project
 3. Validations without exceptions: https://medium.com/the-cloud-builders-guild/validation-without-exceptions-using-a-mediatr-pipeline-behavior-278f124836dc
