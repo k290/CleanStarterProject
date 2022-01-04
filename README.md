@@ -1,3 +1,5 @@
+# Overview
+A starter project I built that explores a meld of vertical slice code layout with CQRS, in the same vain as Jason Taylor's Clean Architecture. Additionally, as suggested by Uncle Bob Martin in his Onion Architecture, it will also explore using a Model-View-Presenter pattern to decouple the front-end models from the business models.
 
 ## Getting Started
 You will need .NET Core 3.1,  VS 2019 and SQL Server 2017 or greater. This project leverages C# 8 features
