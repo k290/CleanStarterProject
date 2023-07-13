@@ -52,7 +52,7 @@ namespace MyMovieLibrary
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IMapper mapper)
         {
 #if DEBUG
-            mapper.ConfigurationProvider.AssertConfigurationIsValid(); //ideally should be in a unit test
+            mapper.ConfigurationProvider.AssertConfigurationIsValid();
 #endif
             if (env.IsDevelopment())
             {
